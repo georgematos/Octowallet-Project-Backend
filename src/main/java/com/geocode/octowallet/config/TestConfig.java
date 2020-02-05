@@ -1,4 +1,4 @@
-package com.geocode.octowallet.octowallet.config;
+package com.geocode.octowallet.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
