@@ -25,7 +25,6 @@ import org.springframework.context.annotation.Profile;
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 
-  // repostiorios como atributos
   private ExpenseRepository expenseRepository;
   private IncomeRepository incomeRepository;
   private InstallmentRepository installmentRepository;
@@ -34,7 +33,6 @@ public class TestConfig implements CommandLineRunner {
   @Autowired
   public TestConfig(ExpenseRepository expenseRepository, IncomeRepository incomeRepository,
       InstallmentExpenseRepository instExpenseRepository, InstallmentRepository installmentRepository) {
-    // injeção dos repositorios
     this.expenseRepository = expenseRepository;
     this.incomeRepository = incomeRepository;
     this.instExpenseRepository = instExpenseRepository;
@@ -44,7 +42,7 @@ public class TestConfig implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    // instancias e persistencias
+
     CasualExpense caExp1 = new CasualExpense(null, "Fonte 600w", new BigDecimal("400.0"), LocalDate.of(2020, 2, 1));
     CasualExpense caExp2 = new CasualExpense(null, "God of War", new BigDecimal("69.0"), LocalDate.of(2019, 12, 13));
 
