@@ -2,13 +2,18 @@ package com.geocode.octowallet.config;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 import com.geocode.octowallet.entities.CasualExpense;
 import com.geocode.octowallet.entities.CasualIncome;
 import com.geocode.octowallet.entities.FixedExpense;
 import com.geocode.octowallet.entities.FixedIncome;
+import com.geocode.octowallet.entities.Installment;
+import com.geocode.octowallet.entities.InstallmentExpense;
 import com.geocode.octowallet.repositories.ExpenseRepository;
 import com.geocode.octowallet.repositories.IncomeRepository;
+import com.geocode.octowallet.repositories.InstallmentExpenseRepository;
+import com.geocode.octowallet.repositories.InstallmentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,12 +27,18 @@ public class TestConfig implements CommandLineRunner {
   // repostiorios como atributos
   private ExpenseRepository expenseRepository;
   private IncomeRepository incomeRepository;
+  private InstallmentRepository installmentRepository;
+  private InstallmentExpenseRepository instExpenseRepository;
 
   @Autowired
-  public TestConfig(ExpenseRepository expenseRepository, IncomeRepository incomeRepository) {
+  public TestConfig(ExpenseRepository expenseRepository, IncomeRepository incomeRepository,
+      InstallmentExpenseRepository instExpenseRepository, InstallmentRepository installmentRepository) {
     // injeção dos repositorios
     this.expenseRepository = expenseRepository;
     this.incomeRepository = incomeRepository;
+    this.instExpenseRepository = instExpenseRepository;
+    this.installmentRepository = installmentRepository;
+
   }
 
   @Override
@@ -49,5 +60,15 @@ public class TestConfig implements CommandLineRunner {
     incomeRepository.saveAll(Arrays.asList(casInc1));
     incomeRepository.saveAll(Arrays.asList(fixInc1));
 
+    InstallmentExpense instExp = new InstallmentExpense(null, "Teclado mecanico", 454.84, LocalDate.of(2020, 6, 1), 10);
+    instExpenseRepository.saveAll(Arrays.asList(instExp));
+
+    List<Installment> installments = instExp.generateExpenseInstallments();
+
+    installmentRepository.saveAll(installments);
+
+    instExp.getInstallments().addAll(installments);
+
+    instExpenseRepository.saveAll(Arrays.asList(instExp));
   }
 }

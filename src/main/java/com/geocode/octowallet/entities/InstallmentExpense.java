@@ -35,6 +35,15 @@ public class InstallmentExpense extends Expense {
     this.numberOfInstallments = numberOfInstallments;
   }
 
+  public List<Installment> generateExpenseInstallments() {
+    Double installmentValue = super.getValue() / numberOfInstallments;
+    for (int i = 1; i <= numberOfInstallments; i++) {
+      LocalDate nextDate = date.plusMonths(i);
+      installments.add(new Installment(null, installmentValue, false, nextDate, this));
+    }
+    return installments;
+  }
+
   public LocalDate getDate() {
     return date;
   }
