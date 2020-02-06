@@ -1,6 +1,7 @@
 package com.geocode.octowallet.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -16,16 +17,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * Income
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Income implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.TABLE, generator = "INCOME_GEN")
+  @GeneratedValue(strategy = GenerationType.TABLE)
   private Long id;
   private String description;
-  private Double value;
+  private BigDecimal value;
 
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate date;
@@ -33,7 +34,7 @@ public abstract class Income implements Serializable {
   public Income() {
   }
 
-  public Income(Long id, String description, Double value, LocalDate date) {
+  public Income(Long id, String description, BigDecimal value, LocalDate date) {
     this.id = id;
     this.description = description;
     this.value = value;
@@ -56,11 +57,11 @@ public abstract class Income implements Serializable {
     this.description = description;
   }
 
-  public Double getValue() {
+  public BigDecimal getValue() {
     return value;
   }
 
-  public void setValue(Double value) {
+  public void setValue(BigDecimal value) {
     this.value = value;
   }
 

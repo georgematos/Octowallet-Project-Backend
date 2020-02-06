@@ -1,6 +1,7 @@
 package com.geocode.octowallet.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,12 +23,12 @@ public abstract class Expense implements Serializable {
   @GeneratedValue(strategy = GenerationType.TABLE, generator = "EXPENSE_GEN")
   private Long id;
   private String description;
-  private Double value;
+  private BigDecimal value;
 
   public Expense() {
   }
 
-  public Expense(Long id, String description, Double value) {
+  public Expense(Long id, String description, BigDecimal value) {
     this.id = id;
     this.description = description;
     this.value = value;
@@ -41,11 +42,11 @@ public abstract class Expense implements Serializable {
     this.description = description;
   }
 
-  public Double getValue() {
+  public BigDecimal getValue() {
     return value;
   }
 
-  public void setValue(Double value) {
+  public void setValue(BigDecimal value) {
     this.value = value;
   }
 

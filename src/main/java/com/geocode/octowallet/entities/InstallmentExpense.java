@@ -1,5 +1,6 @@
 package com.geocode.octowallet.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +30,15 @@ public class InstallmentExpense extends Expense {
   public InstallmentExpense() {
   }
 
-  public InstallmentExpense(Long id, String description, Double value, LocalDate date, Integer numberOfInstallments) {
+  public InstallmentExpense(Long id, String description, BigDecimal value, LocalDate date,
+      Integer numberOfInstallments) {
     super(id, description, value);
     this.date = date;
     this.numberOfInstallments = numberOfInstallments;
   }
 
   public List<Installment> generateExpenseInstallments() {
-    Double installmentValue = super.getValue() / numberOfInstallments;
+    BigDecimal installmentValue = super.getValue().divide(new BigDecimal(numberOfInstallments));
     for (int i = 1; i <= numberOfInstallments; i++) {
       LocalDate nextDate = date.plusMonths(i);
       installments.add(new Installment(null, installmentValue, false, nextDate, this));

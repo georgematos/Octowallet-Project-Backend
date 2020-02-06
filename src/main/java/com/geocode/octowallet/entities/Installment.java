@@ -1,5 +1,6 @@
 package com.geocode.octowallet.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Installment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Double value;
+  private BigDecimal value;
   private boolean paid = false;
   private LocalDate dueDate;
 
@@ -32,7 +33,7 @@ public class Installment {
   public Installment() {
   }
 
-  public Installment(Long id, Double value, boolean paid, LocalDate dueDate, InstallmentExpense expense) {
+  public Installment(Long id, BigDecimal value, boolean paid, LocalDate dueDate, InstallmentExpense expense) {
     this.id = id;
     this.value = value;
     this.paid = paid;
@@ -48,11 +49,11 @@ public class Installment {
     this.id = id;
   }
 
-  public Double getValue() {
+  public BigDecimal getValue() {
     return value;
   }
 
-  public void setValue(Double value) {
+  public void setValue(BigDecimal value) {
     this.value = value;
   }
 

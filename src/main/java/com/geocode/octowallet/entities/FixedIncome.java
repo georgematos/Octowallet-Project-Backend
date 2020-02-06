@@ -1,5 +1,6 @@
 package com.geocode.octowallet.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class FixedIncome extends Income {
   public FixedIncome() {
   }
 
-  public FixedIncome(Long id, String description, Double value, LocalDate date, boolean active) {
+  public FixedIncome(Long id, String description, BigDecimal value, LocalDate date, boolean active) {
     super(id, description, value, date);
     this.active = active;
   }

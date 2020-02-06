@@ -1,5 +1,6 @@
 package com.geocode.octowallet.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class CasualExpense extends Expense {
   public CasualExpense() {
   }
 
-  public CasualExpense(Long id, String description, Double value, LocalDate date) {
+  public CasualExpense(Long id, String description, BigDecimal value, LocalDate date) {
     super(id, description, value);
     this.date = date;
   }
