@@ -1,14 +1,14 @@
 package com.geocode.octowallet.repositories;
 
-import com.geocode.octowallet.entities.FixedExpense;
+import com.geocode.octowallet.entities.Expense;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * FixedExpenseRepository
+ * ExpenseRepository
  */
 @Repository
-public interface FixedExpenseRepository extends JpaRepository<FixedExpense, Long> {
+public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
 }
