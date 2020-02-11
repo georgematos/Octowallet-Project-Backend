@@ -32,6 +32,14 @@ public abstract class Expense implements Serializable {
     this.value = value;
   }
 
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public String getDescription() {
     return description;
   }
