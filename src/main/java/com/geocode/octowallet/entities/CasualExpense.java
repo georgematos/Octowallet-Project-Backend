@@ -5,8 +5,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 /**
  * CasualExpense
  */
@@ -15,7 +13,6 @@ public class CasualExpense extends Expense {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate date;
 
   public CasualExpense() {

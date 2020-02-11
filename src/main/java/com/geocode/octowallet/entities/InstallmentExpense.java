@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -19,7 +18,6 @@ public class InstallmentExpense extends Expense {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate date;
   private Integer numberOfInstallments;
 

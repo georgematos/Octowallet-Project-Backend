@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 /**
  * Income
  */
@@ -25,7 +23,6 @@ public abstract class Income implements Serializable {
   private String description;
   private BigDecimal value;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate date;
 
   public Income() {
