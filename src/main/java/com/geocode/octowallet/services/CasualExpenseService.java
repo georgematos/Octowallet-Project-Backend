@@ -2,8 +2,6 @@ package com.geocode.octowallet.services;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-
 import com.geocode.octowallet.entities.CasualExpense;
 import com.geocode.octowallet.repositories.CasualExpenseRepository;
 
@@ -28,8 +26,7 @@ public class CasualExpenseService {
   }
 
   public CasualExpense findById(Long id) {
-    return repository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Entidade CasualExpense não foi encontrada."));
+    return repository.findById(id).get();
   }
 
   public CasualExpense save(CasualExpense entity) {
