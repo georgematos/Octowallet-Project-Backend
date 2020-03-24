@@ -33,4 +33,16 @@ public class CasualExpenseService {
     return repository.save(entity);
   }
 
+  public CasualExpense update(Long id, CasualExpense entityToUpdate) {
+    CasualExpense entity = findById(id);
+    updateEntity(entity, entityToUpdate);
+    return repository.save(entity);
+  }
+
+  private void updateEntity(CasualExpense entity, CasualExpense entityToUpdate) {
+    entity.setDate(entityToUpdate.getDate());
+    entity.setDescription(entityToUpdate.getDescription());
+    entity.setValue(entityToUpdate.getValue());
+  }
+
 }

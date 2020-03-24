@@ -54,7 +54,7 @@ public class FixedExpenseResource {
     return ResponseEntity.created(uri).body(fixedExpense);
   }
 
-  @PutMapping(value="/{id}")
+  @PutMapping(value = "/{id}")
   public ResponseEntity<FixedExpense> update(@PathVariable Long id, @RequestBody FixedExpense entity) {
       
     FixedExpense updatedEntity = service.update(id, entity);

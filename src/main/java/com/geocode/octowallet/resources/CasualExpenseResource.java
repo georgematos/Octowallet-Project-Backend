@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,14 @@ public class CasualExpenseResource {
         .toUri();
 
     return ResponseEntity.created(uri).body(casualExpense);
+  }
+
+  @PutMapping(value = "/{id}")
+  public ResponseEntity<CasualExpense> update(@PathVariable Long id, @RequestBody CasualExpense entity) {
+
+    CasualExpense updatedEntity = service.update(id, entity);
+
+    return ResponseEntity.ok().body(updatedEntity);
   }
 
 }
