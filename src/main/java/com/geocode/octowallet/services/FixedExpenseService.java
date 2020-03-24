@@ -33,4 +33,17 @@ public class FixedExpenseService {
     return repository.save(entity);
   }
 
+  public FixedExpense update(Long id, FixedExpense entityToUpdate) {
+    FixedExpense entity = findById(id);
+    updateEntity(entity, entityToUpdate);
+    return repository.save(entity);
+  }
+
+  private void updateEntity(FixedExpense entity, FixedExpense entityToUpdate) {
+    entity.setActive(entityToUpdate.isActive());
+    entity.setDescription(entityToUpdate.getDescription());
+    entity.setDueDate(entityToUpdate.getDueDate());
+    entity.setValue(entityToUpdate.getValue());
+  }
+
 }

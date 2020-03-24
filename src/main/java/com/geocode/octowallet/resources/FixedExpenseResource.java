@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 /**
  * InstallmentResource
@@ -50,6 +52,14 @@ public class FixedExpenseResource {
         .toUri();
 
     return ResponseEntity.created(uri).body(fixedExpense);
+  }
+
+  @PutMapping(value="/{id}")
+  public ResponseEntity<FixedExpense> update(@PathVariable Long id, @RequestBody FixedExpense entity) {
+      
+    FixedExpense updatedEntity = service.update(id, entity);
+      
+    return ResponseEntity.ok().body(updatedEntity);
   }
 
 }
