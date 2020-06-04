@@ -33,6 +33,8 @@ public class InstallmentExpense extends Expense {
     super(id, description, value);
     this.date = date;
     this.numberOfInstallments = numberOfInstallments;
+
+    installments = generateExpenseInstallments();
   }
 
   public List<Installment> generateExpenseInstallments() {

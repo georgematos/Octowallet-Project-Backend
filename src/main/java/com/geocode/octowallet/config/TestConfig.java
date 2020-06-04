@@ -68,13 +68,7 @@ public class TestConfig implements CommandLineRunner {
         LocalDate.of(2020, 6, 1), 10);
     instExpenseRepository.saveAll(Arrays.asList(instExp));
 
-    List<Installment> installments = instExp.generateExpenseInstallments();
-
-    installmentRepository.saveAll(installments);
-
-    instExp.getInstallments().addAll(installments);
-
-    instExpenseRepository.saveAll(Arrays.asList(instExp));
+    installmentRepository.saveAll(instExp.getInstallments());
 
   }
 }

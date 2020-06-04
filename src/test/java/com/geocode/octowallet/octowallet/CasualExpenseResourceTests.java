@@ -41,7 +41,7 @@ public class CasualExpenseResourceTests extends DemoApplicationTests {
 
     mockMvc.perform(get("/casualexpenses")).andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$", hasSize(2)))
+        .andExpect(jsonPath("$", hasSize(3)))
         .andExpect(jsonPath("$[0].id", is(1)))
         .andExpect(jsonPath("$[0].description", is("Fonte 600w")))
         .andExpect(jsonPath("$[0].value", is(400.0)))
@@ -49,7 +49,11 @@ public class CasualExpenseResourceTests extends DemoApplicationTests {
         .andExpect(jsonPath("$[1].id", is(2)))
         .andExpect(jsonPath("$[1].description", is("God of War")))
         .andExpect(jsonPath("$[1].value", is(69.0)))
-        .andExpect(jsonPath("$[1].date", is(Arrays.asList(2019, 12, 13))));
+        .andExpect(jsonPath("$[1].date", is(Arrays.asList(2019, 12, 13))))
+        .andExpect(jsonPath("$[2].id", is(3)))
+        .andExpect(jsonPath("$[2].description", is("Alcool Gel")))
+        .andExpect(jsonPath("$[2].value", is(23.90)))
+        .andExpect(jsonPath("$[2].date", is(Arrays.asList(2020, 3, 29))));
   }
 
   @Test

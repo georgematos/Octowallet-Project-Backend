@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 /**
- * InstallmentResource
+ * FixedExpenseResource
  */
 @RestController
 @RequestMapping(value = "/fixedexpenses")
