@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("test")
+@Profile("dev")
 public class TestConfig implements CommandLineRunner {
 
   private CasualExpenseRepository casualExpenseRepository;
@@ -48,8 +48,9 @@ public class TestConfig implements CommandLineRunner {
 
     CasualExpense caExp1 = new CasualExpense(null, "Fonte 600w", new BigDecimal("400.0"), LocalDate.of(2020, 2, 1));
     CasualExpense caExp2 = new CasualExpense(null, "God of War", new BigDecimal("69.0"), LocalDate.of(2019, 12, 13));
+    CasualExpense caExp3 = new CasualExpense(null, "Alcool Gel", new BigDecimal("23.90"), LocalDate.of(2020, 3, 29));
 
-    casualExpenseRepository.saveAll(Arrays.asList(caExp1, caExp2));
+    casualExpenseRepository.saveAll(Arrays.asList(caExp1, caExp2, caExp3));
 
     FixedExpense fixExp1 = new FixedExpense(null, "Netflix", new BigDecimal("35.90"), LocalDate.of(2018, 6, 10), true);
     FixedExpense fixExp2 = new FixedExpense(null, "Amazon Prime", new BigDecimal("9.90"), LocalDate.of(2020, 1, 6),
